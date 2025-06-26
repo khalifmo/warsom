@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ article.title }}</h2>
+<time datetime="{{ article.published_at|date:'c' }}">
+  Published: {{ article.published_at|date:"F j, Y" }}
+</time>
+<p>{{ article.ai_rewrite }}</p>
+
+<h4>Sources</h4>
+<ul>
+  {% for source in article.sources.all %}
+  <li>
+    <a href="{{ source.url }}" target="_blank">{{ source.name }}</a> (Bias: {{ source.bias }})
+  </li>
+  {% endfor %}
+</ul>
+
+{% if article.media_file %}
+<div>
+  <audio controls src="{{ article.media_file.url }}"></audio>
+</div>
+{% endif %}
+{% endblock %}
+
+
