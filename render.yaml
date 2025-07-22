@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: django-news-portal
+    env: python
+    region: oregon  # change to your preferred region
+    plan: starter  # free plan
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn config.wsgi --bind 0.0.0.0:10000
+    envVars:
+      - key: SECRET_KEY
+        fromDatabase: false
+        value: "your-secret-key-here"
+      - key: DEBUG
+        fromDatabase: false
+        value: "False"
+      - key: DB_NAME
+        fromDatabase: false
+        value: "your-db-name"
+      - key: DB_USER
+        fromDatabase: false
+        value: "your-db-user"
+      - key: DB_PASSWORD
+        fromDatabase: false
+        value: "your-db-password"
+      - key: DB_HOST
+        fromDatabase: false
+        value: "your-db-host"
+      - key: DB_PORT
+        fromDatabase: false
+        value: "3306"  # or the port your DB uses
+
+databases:
+  - name: django-news-db
+    engine: mysql  # or postgresql
+    version: 8
+    plan: starter
+    region: oregon
