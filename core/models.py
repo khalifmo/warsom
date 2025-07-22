@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.urls import reverse
 
@@ -16,11 +15,10 @@ class Article(models.Model):
     ai_rewrite = models.TextField(blank=True, null=True)
     published_at = models.DateTimeField(auto_now_add=True, db_index=True)
     sources = models.ManyToManyField(Source)
-    media_file = models.FileField(upload_to=\'media/\', null=True, blank=True)
+    media_file = models.FileField(upload_to='articles/', null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse(\'article_detail\', args=[str(self.pk)])
-
+        return reverse('article_detail', args=[str(self.pk)])
