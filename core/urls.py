@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import ArticleListView, article_detail
+from .views import home
 
 urlpatterns = [
-    path('', ArticleListView.as_view(), name='article-list'),
-    path('article/<int:pk>/', article_detail, name='article-detail'),
+    path('', home),  # This is the home page
 ]
