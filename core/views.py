@@ -4,10 +4,10 @@ from .models import Article
 
 class ArticleListView(ListView):
     model = Article
-    template_name = "core/home.html"  # Make sure this template exists
+    template_name = "core/article_list.html"  # Adjust if your template path differs
     context_object_name = "articles"
-    paginate_by = 10
-    ordering = ["-published_at"]
+    paginate_by = 10  # Optional: paginate 10 articles per page
+    ordering = ["-published_at"]  # Show newest articles first
 
 def article_detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
