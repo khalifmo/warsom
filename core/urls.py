@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import home
+from .views import ArticleListView
 
 urlpatterns = [
-    path('', home),  # This is the home page
+    path('', ArticleListView.as_view(), name='home'),
 ]
