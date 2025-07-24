@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 class ArticleListView(ListView):
     model = Article
-    template_name = "core/article_list.html"
+    template_name = "core/home.html"
 
     def get_queryset(self):
         logger.info("Fetching articles...")
